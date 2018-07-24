@@ -1,8 +1,8 @@
 // You can find your project ID in your Dialogflow agent settings
-const projectId = 'ENTER_PROJECT_ID_HERE'; //https://dialogflow.com/docs/agents#settings
+const projectId = 'previewleo'; //https://dialogflow.com/docs/agents#settings
 const sessionId = 'quickstart-session-id';
 const query = 'hello';
-const languageCode = 'en-US';
+const languageCode = 'fr-FR';
 
 // Instantiate a DialogFlow client.
 const dialogflow = require('dialogflow');
