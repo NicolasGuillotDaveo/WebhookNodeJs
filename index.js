@@ -1,29 +1,41 @@
-"use strict";
+// You can find your project ID in your Dialogflow agent settings
+const projectId = 'previewleo'; //https://dialogflow.com/docs/agents#settings
+const sessionId = 'quickstart-session-id';
+const query = 'hello';
+const languageCode = 'fr-FR';
 
-const express = require("express");
-const bodyParser = require("body-parser");
+// Instantiate a DialogFlow client.
+const dialogflow = require('dialogflow');
+const sessionClient = new dialogflow.SessionsClient();
 
-const restService = express();
+// Define session path
+const sessionPath = sessionClient.sessionPath(projectId, sessionId);
 
-restService.use(
-  bodyParser.urlencoded({
-    extended: true
+// The text query request.
+const request = {
+  session: sessionPath,
+  queryInput: {
+    text: {
+      text: query,
+      languageCode: languageCode,
+    },
+  },
+};
+
+// Send request and log result
+sessionClient
+  .detectIntent(request)
+  .then(responses => {
+    console.log('Detected intent');
+    const result = responses[0].queryResult;
+    console.log(`  Query: ${result.queryText}`);
+    console.log(`  Response: ${result.fulfillmentText}`);
+    if (result.intent) {
+      console.log(`  Intent: ${result.intent.displayName}`);
+    } else {
+      console.log(`  No intent matched.`);
+    }
   })
-);
-
-restService.use(bodyParser.json());
-
-restService.post( function(req, res) {
-  var speech =
-    req.body.queryResult &&
-    req.body.queryResult.fulfillmentText
-      ? req.body.queryResult.fulfillmentText
-      : "Seems like some problem. Speak again.";
-  return res.json({
-    fulfillmentText: speech,
-    source: "webhook-echo-sample"
+  .catch(err => {
+    console.error('ERROR:', err);
   });
-});
- 
-
-
