@@ -13,21 +13,17 @@ restService.use(
 
 restService.use(bodyParser.json());
 
-restService.post("/echo", function(req, res) {
+restService.post( function(req, res) {
   var speech =
-    req.body.result &&
-    req.body.result.parameters &&
-    req.body.result.parameters.echoText
-      ? req.body.result.parameters.echoText
+    req.body.queryResult &&
+    req.body.queryResult.fulfillmentText
+      ? req.body.queryResult.fulfillmentText
       : "Seems like some problem. Speak again.";
   return res.json({
-    speech: speech,
-    displayText: speech,
+    fulfillmentText: speech,
     source: "webhook-echo-sample"
   });
 });
  
 
-restService.listen(process.env.PORT || 8000, function() {
-  console.log("Server up and listening");
-});
+
