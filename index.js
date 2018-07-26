@@ -28,11 +28,12 @@ const webhook = (req, res) => {
   let parameters = body.result.parameters
 
   // Performing the action
-  let response;
-  response.fulfillmentText="helo"
-  response.source="webhook"
-  
+  let response={
+fulfillmentText:"helo",
+source:"webhook"
 
+  };
+  
   // Sending back the results to the agent
   res.json(response)
 }
