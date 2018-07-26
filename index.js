@@ -7,8 +7,8 @@ const webhook = (req, res) => {
   let parameters = body.result.parameters
 
   // Performing the action
-  response.fulfillmentText="helo";
-  response.source="webhook";
+  response.fulfillmentText="helo"
+  response.source="webhook"
   
 
   // Sending back the results to the agent
