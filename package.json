@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/NicolasGuillotDaveo/WebhookNodeJs.git"
   },
-  "author": "",
+  "author": "NicolasGuillot",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/NicolasGuillotDaveo/WebhookNodeJs/issues"
