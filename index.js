@@ -1,42 +1,14 @@
-// You can find your project ID in your Dialogflow agent settings
-const projectId = 'previewleo'; //https://dialogflow.com/docs/agents#settings
-const sessionId = 'quickstart-session-id';
-const query = 'hello';
-const languageCode = 'fr-FR';
+app.post('/webhook',function (req, res){
+console.log('Received a post request');
+if(!req.body) return res.sendStatus(400)
+res.setHeader('Content-Type','application/json');
+console.log('here is the post request from dialogflow');
+console.log(req.body);
 
-// Instantiate a DialogFlow client.
-const dialogflow = require('dialogflow');
-const sessionClient = new dialogflow.SessionsClient();
+let response= " ";
+let responseObj={
+  "fulfillmentText":response,
+  "source":"webhook node"}
+  return res.json(responseObj);
 
-// Define session path
-const sessionPath = sessionClient.sessionPath(projectId, sessionId);
-
-// The text query request.
-const request = {
-  session: sessionPath,
-  queryInput: {
-    text: {
-      text: query,
-      languageCode: languageCode,
-    },
-  },
-};
-
-// Send request and log result
-sessionClient
-  .detectIntent(request)
-  .then(responses => {
-    console.log('Detected intent');
-    const result = responses[0].queryResult;
-    console.log(`  Query: ${result.queryText}`);
-    console.log(`  Response: ${result.fulfillmentText}`);
-    if (result.intent) {
-      console.log(`  Intent: ${result.intent.displayName}`);
-    } else {
-      console.log(`  No intent matched.`);
-    }
-  })
-  .catch(err => {
-    console.error('ERROR:', err);
-  });
-  return res.json(result);
+})
