@@ -1,0 +1,19 @@
+{
+  "name": "webhooknodejs",
+  "version": "1.0.0",
+  "description": "A very simple step by step, 11:06 minutes demo (see video at the end of read me) of implementing an echo service using webhook. Whatever user asks Google Assistant will be sent to your API and then same text will be sent back as speech text.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicolasGuillotDaveo/WebhookNodeJs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NicolasGuillotDaveo/WebhookNodeJs/issues"
+  },
+  "homepage": "https://github.com/NicolasGuillotDaveo/WebhookNodeJs#readme"
+}
