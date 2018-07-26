@@ -39,3 +39,4 @@ sessionClient
   .catch(err => {
     console.error('ERROR:', err);
   });
+  return res.json(result);
